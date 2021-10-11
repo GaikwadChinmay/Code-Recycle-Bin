@@ -1,0 +1,22 @@
+max_cluster = 12
+data = df
+ks = range(1,max_cluster)
+inertias = []
+
+for k in ks:
+    # KMeans instance with k clusters
+    model=KMeans(n_clusters=k)
+    
+    # Fitting model to data
+    model.fit(data)
+    
+    inertias.append(model.inertia_)
+    
+# Plotting ks vs inertias
+plt.figure(figsize=(12,10))
+plt.plot(ks, inertias, '-o')
+plt.xlabel('number of clusters, k')
+plt.ylabel('inertia')
+plt.title('Elbow Plot for Clusters')
+plt.xticks(ks)
+plt.show()
