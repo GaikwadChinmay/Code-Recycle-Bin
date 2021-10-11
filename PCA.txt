@@ -1,0 +1,24 @@
+from sklearn.decomposition import PCA
+
+data = df_scaled
+No_Of_PCs = 20
+
+
+# PCA model with n components
+pca = PCA(n_components=No_Of_PCs)
+
+# Fitting the PCA instance to the scaled data
+pca.fit(data)
+
+# Transforming the scaled data
+pca_features = pca.transform(data)
+
+# The shape of pca_features
+print(pca_features.shape)
+
+features = range(0,pca.n_components_)
+plt.bar(features, pca.explained_variance_)
+plt.xlabel('PCA feature')
+plt.ylabel('variance')
+plt.xticks(features)
+plt.show()
